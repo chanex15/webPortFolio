@@ -8,8 +8,8 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Your Web3Forms access key
-  const ACCESS_KEY = '8379ad3f-2f60-440c-93ea-714c4b854f02'
+  // Your Web3Forms access key (updated)
+  const ACCESS_KEY = '18a26541-b57c-41b5-a807-8de80ee3c1a3'
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
