@@ -8,9 +8,8 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // 🔑 IMPORTANT: Replace this with your actual Web3Forms access key
-  // Get it from https://app.web3forms.com after signing up
-  const ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'
+  // Your Web3Forms access key
+  const ACCESS_KEY = '8379ad3f-2f60-440c-93ea-714c4b854f02'
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -18,11 +17,7 @@ export function ContactForm() {
     setError(null)
 
     const formData = new FormData(e.currentTarget)
-    // Add your Web3Forms access key
     formData.append('access_key', ACCESS_KEY)
-
-    // Optional: Add a redirect URL (Web3Forms will redirect after submit, but we handle with JS)
-    // formData.append('redirect', window.location.href)
 
     const object = Object.fromEntries(formData)
     const json = JSON.stringify(object)
@@ -44,13 +39,12 @@ export function ContactForm() {
         e.currentTarget.reset()
         setTimeout(() => setSent(false), 4000)
       } else {
-        // Handle errors like invalid access key, missing fields, spam detection, etc.
-        setError(result.message || 'Something went wrong. Please try again.')
+        setError(result.message || 'Submission failed. Please try again.')
         setTimeout(() => setError(null), 5000)
       }
     } catch (err) {
       console.error('Network error:', err)
-      setError('Network error. Please check your connection and try again.')
+      setError('Network error. Check your connection and try again.')
       setTimeout(() => setError(null), 5000)
     } finally {
       setLoading(false)
