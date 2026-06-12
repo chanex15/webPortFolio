@@ -5,16 +5,65 @@ import { Send, Check } from 'lucide-react'
 
 export function ContactForm() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  // 🔑 IMPORTANT: Replace this with your actual Web3Forms access key
+  // Get it from https://app.web3forms.com after signing up
+  const ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
-    e.currentTarget.reset()
+    setLoading(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+    // Add your Web3Forms access key
+    formData.append('access_key', ACCESS_KEY)
+
+    // Optional: Add a redirect URL (Web3Forms will redirect after submit, but we handle with JS)
+    // formData.append('redirect', window.location.href)
+
+    const object = Object.fromEntries(formData)
+    const json = JSON.stringify(object)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: json,
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSent(true)
+        e.currentTarget.reset()
+        setTimeout(() => setSent(false), 4000)
+      } else {
+        // Handle errors like invalid access key, missing fields, spam detection, etc.
+        setError(result.message || 'Something went wrong. Please try again.')
+        setTimeout(() => setError(null), 5000)
+      }
+    } catch (err) {
+      console.error('Network error:', err)
+      setError('Network error. Please check your connection and try again.')
+      setTimeout(() => setError(null), 5000)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="rounded-3xl glass p-8 md:p-10">
+      {error && (
+        <div className="mb-5 rounded-lg border border-red-500/50 bg-red-500/10 px-4 py-2 text-sm text-red-400">
+          {error}
+        </div>
+      )}
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" placeholder="Your name" />
         <Field label="Email" name="email" type="email" placeholder="you@email.com" />
@@ -36,10 +85,15 @@ export function ContactForm() {
       </div>
       <button
         type="submit"
-        disabled={sent}
+        disabled={sent || loading}
         className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-aurora px-7 py-3.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-primary-foreground transition-all hover:-translate-y-0.5 glow-teal disabled:opacity-70"
       >
-        {sent ? (
+        {loading ? (
+          <>
+            <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            Sending...
+          </>
+        ) : sent ? (
           <>
             <Check size={15} />
             Message Sent
