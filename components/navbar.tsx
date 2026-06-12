@@ -56,7 +56,7 @@ export function Navbar() {
             />
           </span>
           <span className="font-serif text-base italic tracking-wide text-gradient">
-            Christian Paul
+            Who is Zircon?
           </span>
         </Link>
 
