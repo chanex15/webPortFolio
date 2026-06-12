@@ -8,7 +8,7 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Your Web3Forms access key (updated)
+  // Your Web3Forms access key
   const ACCESS_KEY = '18a26541-b57c-41b5-a807-8de80ee3c1a3'
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -16,7 +16,10 @@ export function ContactForm() {
     setLoading(true)
     setError(null)
 
-    const formData = new FormData(e.currentTarget)
+    // Store form element BEFORE any async work
+    const form = e.currentTarget
+
+    const formData = new FormData(form)
     formData.append('access_key', ACCESS_KEY)
 
     const object = Object.fromEntries(formData)
@@ -36,15 +39,21 @@ export function ContactForm() {
 
       if (result.success) {
         setSent(true)
-        e.currentTarget.reset()
+        // Reset using the stored form reference
+        form.reset()
         setTimeout(() => setSent(false), 4000)
       } else {
         setError(result.message || 'Submission failed. Please try again.')
         setTimeout(() => setError(null), 5000)
       }
     } catch (err) {
-      console.error('Network error:', err)
-      setError('Network error. Check your connection and try again.')
+      console.error('Submission error:', err)
+      // Better error message based on error type
+      if (err instanceof TypeError && err.message.includes('fetch')) {
+        setError('Network error. Check your connection and try again.')
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
       setTimeout(() => setError(null), 5000)
     } finally {
       setLoading(false)
