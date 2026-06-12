@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+  --font-heading: var(--font-playfair), Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand tokens */
+  --color-aurora: var(--aurora1);
+  --color-aurora-blue: var(--aurora4);
+  --color-aurora-purple: var(--aurora2);
+  --color-aurora-pink: var(--aurora3);
+  --color-gold: var(--gold);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  --c0: #000005;
+  --c1: #04061a;
+  --c2: #0a0e2e;
+  --aurora1: #00ffc8;
+  --aurora2: #7b5ea7;
+  --aurora3: #ff6b9d;
+  --aurora4: #00b4ff;
+  --gold: #c8a96e;
+
+  --background: #000005;
+  --foreground: #e8eeff;
+  --card: rgba(8, 12, 35, 0.55);
+  --card-foreground: #e8eeff;
+  --popover: #04061a;
+  --popover-foreground: #e8eeff;
+  --primary: #00ffc8;
+  --primary-foreground: #000005;
+  --secondary: rgba(255, 255, 255, 0.04);
+  --secondary-foreground: #e8eeff;
+  --muted: rgba(180, 200, 255, 0.08);
+  --muted-foreground: rgba(180, 200, 255, 0.55);
+  --accent: rgba(0, 255, 200, 0.08);
+  --accent-foreground: #00ffc8;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(120, 160, 255, 0.12);
+  --input: rgba(120, 160, 255, 0.16);
+  --ring: rgba(0, 255, 200, 0.5);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(0, 255, 200, 0.25);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, var(--aurora1), var(--aurora4));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-animate {
+    background: linear-gradient(135deg, var(--aurora1), var(--aurora4), var(--aurora1));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease infinite;
+  }
+  .glass {
+    background: rgba(8, 12, 35, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+  .glow-teal {
+    box-shadow: 0 0 30px rgba(0, 255, 200, 0.25);
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #04061a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--aurora1), var(--aurora4));
+  border-radius: 10px;
+}
+
+/* ── Noise overlay ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+}
+@keyframes scrollBob {
+  0%, 100% { top: 6px; opacity: 1; }
+  50% { top: 16px; opacity: 0.3; }
+}
+@keyframes auroraFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
