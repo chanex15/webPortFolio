@@ -6,7 +6,7 @@ export const profile = {
   role: 'Developer & Designer',
   location: 'Cagayan de Oro City, Philippines',
   age: 22,
-  gradYear: '25-26',
+  gradYear: '2025-2026',
   school: 'USTP — Southern Philippines',
   goal: 'Cybersecurity Professional',
   github: 'https://github.com/chanex15',
@@ -30,7 +30,7 @@ export const aboutParagraphs = [
 
 export const stats = [
   { num: '22', label: 'Years Old' },
-  { num: '25-26', label: 'IT Graduate' },
+  { num: '2025-2026', label: 'IT Graduate' },
   { num: 'CDO', label: 'Philippines' },
 ]
 
