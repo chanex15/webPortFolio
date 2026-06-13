@@ -31,7 +31,7 @@ export const aboutParagraphs = [
 export const stats = [
   { num: '22', label: 'Years Old' },
   { num: '2025-2026', label: 'IT Graduate' },
-  { num: 'Cagayan De Oro City', label: 'Philippines' },
+  { num: 'CDO', label: 'Philippines' },
 ]
 
 export type Project = {
