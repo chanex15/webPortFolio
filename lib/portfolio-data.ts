@@ -21,7 +21,7 @@ export const profile = {
   resume: '/christian-paul-amantiad-resume.pdf',
 }
 
-export const roleTags = ['Web Dev', 'UI / UX', 'Next.js', 'Cybersecurity']
+export const roleTags = ['Web Dev', 'UI / UX','Cybersecurity']
 
 export const aboutParagraphs = [
   "I'm an Information Technology graduate based in Cagayan de Oro City, Philippines. I specialize in building secure, user-centered web applications — from concept to deployment.",
