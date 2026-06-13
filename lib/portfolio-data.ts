@@ -204,6 +204,6 @@ export const skillGroups = [
   },
   {
     label: 'Tools & Other',
-    skills: ['Git / GitHub', 'VS Code', 'Figma', 'NPM', 'Linux', 'Vercel', 'Cloudflare', 'Cybersecurity'],
+    skills: ['Git / GitHub', 'VS Code', 'Figma', 'Linux', 'Vercel', 'Cloudflare','Wireshark','Nmap','Kali-linux'],
   },
 ]
