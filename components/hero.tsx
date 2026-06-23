@@ -72,17 +72,16 @@ export function Hero() {
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-aurora" />
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight text-[rgba(220,235,255,0.78)] sm:text-5xl lg:text-6xl"
-        >
-          Building <span className="text-gradient-animate font-bold">fast,</span>{' '}
-          user-centered websites{' '}
-          <span className="text-gradient-animate font-bold">from concept</span>{' '}
-          to deployment.
-        </motion.h1>
+         <motion.h1
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, delay: 0.4 }}
+  className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight text-[rgba(220,235,255,0.78)] sm:text-5xl lg:text-6xl"
+>
+  Tell me your idea.{' '}
+  <span className="text-gradient-animate font-bold">I'll turn it into something</span>{' '}
+  you can actually show people.
+</motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
