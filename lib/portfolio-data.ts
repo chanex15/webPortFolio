@@ -104,6 +104,15 @@ export const projects: Project[] = [
     blurb: 'Social Media Content & Video Editor web portfolio.',
     tags: ['Next.js', 'Web Portfolio'],
   },
+  {
+    index: '07',
+    name: 'Schedlify',
+    url: 'https://schedlify.vercel.app/',
+    domain: 'https://schedlify.vercel.app/',
+    image: '/portfolio/schedlify.png',
+    blurb: 'Map out your Monday-to-Sunday, dress it up in a look you actually like, and export it as an image or PDF. Built for students, planners, and anyone who lives by their timetable.',
+    tags: ['TypeScript', 'Scheduler'],
+  },
 ]
 
 export const galleryItems = [
