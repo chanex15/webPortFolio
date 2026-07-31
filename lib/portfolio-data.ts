@@ -48,8 +48,8 @@ export const projects: Project[] = [
   {
     index: '01',
     name: 'ZirconAI',
-    url: 'https://zirconai.pages.dev/',
-    domain: 'zirconai.pages.dev',
+    url: 'https://zirconai.vercel.app/',
+    domain: 'zirconai.vercel.app',
     image: '/portfolio/zirconai.png',
     blurb:
       'An experimental AI chatbot built with Next.js — featuring natural language processing for intelligent, context-aware responses. A personal exploration of conversational AI and prompt engineering.',
