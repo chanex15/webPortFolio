@@ -113,6 +113,15 @@ export const projects: Project[] = [
     blurb: 'Map out your Monday-to-Sunday, dress it up in a look you actually like, and export it as an image or PDF. Built for students, planners, and anyone who lives by their timetable.',
     tags: ['TypeScript', 'Scheduler'],
   },
+  {
+    index: '08',
+    name: 'Courier',
+    url: 'https://zcourier.vercel.app/',
+    domain: 'https://zcourier.vercel.app/',
+    image: '/portfolio/courier.jpeg',
+    blurb: 'A delightfully fast, end-to-end encrypted messenger for the people you actually want to talk to. Works on Android.',
+    tags: ['Flutter', 'MobileApp'],
+  },
 ]
 
 export const galleryItems = [
