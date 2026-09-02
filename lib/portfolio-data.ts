@@ -108,7 +108,7 @@ export const projects: Project[] = [
     index: '07',
     name: 'Schedlify',
     url: 'https://schedlify.vercel.app/',
-    domain: 'https://schedlify.vercel.app/',
+    domain: 'schedlify.vercel.app',
     image: '/portfolio/schedlify.png',
     blurb: 'Map out your Monday-to-Sunday, dress it up in a look you actually like, and export it as an image or PDF. Built for students, planners, and anyone who lives by their timetable.',
     tags: ['TypeScript', 'Scheduler'],
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     index: '08',
     name: 'Courier',
     url: 'https://zcourier.vercel.app/',
-    domain: 'https://zcourier.vercel.app/',
+    domain: 'zcourier.vercel.app',
     image: '/portfolio/courier.jpeg',
     blurb: 'A delightfully fast, end-to-end encrypted messenger for the people you actually want to talk to. Works on Android.',
     tags: ['Flutter', 'MobileApp'],
@@ -126,11 +126,11 @@ export const projects: Project[] = [
     index: '09',
     name: 'Who is zircon, App',
     url: 'https://who-is-zircon-apk.vercel.app/',
-    domain: 'https://who-is-zircon-apk.vercel.app/',
+    domain: 'who-is-zircon-apk.vercel.app/',
     image: '/portfolio/whois.jpeg',
     blurb: 'A native Android shell that mirrors every edit you push to whoiszircon.vercel.app. Pull-to-refresh, status-bar tinting, splash, offline page all themed to match the live site.',
     tags: ['HTML/CSS', 'MobileApp'],
-  }
+  },
 ]
 
 export const galleryItems = [
