@@ -130,7 +130,7 @@ export const projects: Project[] = [
     image: '/portfolio/whois.jpeg',
     blurb: 'A native Android shell that mirrors every edit you push to whoiszircon.vercel.app. Pull-to-refresh, status-bar tinting, splash, offline page all themed to match the live site.',
     tags: ['HTML/CSS', 'MobileApp'],
-  },
+  }
 ]
 
 export const galleryItems = [
