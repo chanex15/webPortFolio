@@ -122,6 +122,15 @@ export const projects: Project[] = [
     blurb: 'A delightfully fast, end-to-end encrypted messenger for the people you actually want to talk to. Works on Android.',
     tags: ['Flutter', 'MobileApp'],
   },
+  {
+    index: '09',
+    name: 'Who is zircon, App',
+    url: 'https://who-is-zircon-apk.vercel.app/',
+    domain: 'https://who-is-zircon-apk.vercel.app/',
+    image: '/portfolio/whois.jpeg',
+    blurb: 'A native Android shell that mirrors every edit you push to whoiszircon.vercel.app. Pull-to-refresh, status-bar tinting, splash, offline page all themed to match the live site.',
+    tags: ['HTML/CSS', 'MobileApp'],
+  },
 ]
 
 export const galleryItems = [
