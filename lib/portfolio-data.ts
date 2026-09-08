@@ -67,16 +67,6 @@ export const projects: Project[] = [
   },
   {
     index: '03',
-    name: 'ZRC Studio',
-    url: 'https://zrcstudio.pages.dev/',
-    domain: 'zrcstudio.pages.dev',
-    image: '/portfolio/zrc.png',
-    blurb:
-      'Custom websites for local businesses & photographers. Fast delivery, mobile-ready, no templates.',
-    tags: ['HTML/CSS', 'Web Design'],
-  },
-  {
-    index: '04',
     name: 'Motor Shop Inventory',
     url: 'https://motorsample.vercel.app/',
     domain: 'motorsample.vercel.app',
@@ -86,7 +76,7 @@ export const projects: Project[] = [
     tags: ['React', 'Auth System'],
   },
   {
-    index: '05',
+    index: '04',
     name: 'VividMe',
     url: 'https://vividme.vercel.app/',
     domain: 'vividme.vercel.app',
@@ -96,7 +86,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Portfolio'],
   },
   {
-    index: '06',
+    index: '05',
     name: 'Minneth',
     url: 'https://minneth-web.vercel.app/',
     domain: 'minneth-web.vercel.app',
@@ -105,7 +95,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Web Portfolio'],
   },
   {
-    index: '07',
+    index: '06',
     name: 'Schedlify',
     url: 'https://schedlify.vercel.app/',
     domain: 'schedlify.vercel.app',
@@ -114,7 +104,7 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Scheduler'],
   },
   {
-    index: '08',
+    index: '07',
     name: 'Courier',
     url: 'https://zcourier.vercel.app/',
     domain: 'zcourier.vercel.app',
@@ -123,7 +113,7 @@ export const projects: Project[] = [
     tags: ['Flutter', 'MobileApp'],
   },
   {
-    index: '09',
+    index: '08',
     name: 'Who is zircon, App',
     url: 'https://who-is-zircon-apk.vercel.app/',
     domain: 'who-is-zircon-apk.vercel.app/',
