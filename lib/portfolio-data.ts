@@ -30,7 +30,7 @@ export const aboutParagraphs = [
 
 export const stats = [
   { num: '22', label: 'Years Old' },
-  { num: '2025-2026', label: 'IT Graduate' },
+  { num: '2022-2026', label: 'IT Graduate' },
   { num: 'CDO', label: 'Philippines' },
 ]
 
@@ -65,26 +65,24 @@ export const projects: Project[] = [
       'A custom web application developed for the Department of Environment and Natural Resources (DENR) — automating repetitive data tasks to improve operational efficiency and reduce manual processing time.',
     tags: ['Web App', "Gov't"],
   },
-  {
+   {
     index: '03',
-    name: 'Motor Shop Inventory',
-    url: 'https://motorsample.vercel.app/',
-    domain: 'motorsample.vercel.app',
-    image: '/portfolio/motorsample.png',
-    blurb:
-      'Secure inventory management system with authentication for motor shop operations.',
-    tags: ['React', 'Auth System'],
+    name: 'zrcstudio',
+    url: 'https://zrcstudio.vercel.app/',
+    domain: 'zrcstudio.vercel.app',
+    image: '/portfolio/whois.jpeg',
+    blurb: 'ZIRCON STUDIO creates films and photographs for portraits, celebrations, and the people at the heart of themSS',
+    tags: ['Next.js', 'TailwindCSS'],
   },
-  {
+    {
     index: '04',
-    name: 'VividMe',
-    url: 'https://vividme.vercel.app/',
-    domain: 'vividme.vercel.app',
-    image: '/portfolio/vivid.png',
-    blurb:
-      'Portfolio & booking platform for a freelance photographer. Packages, gallery, contact form.',
-    tags: ['Next.js', 'Portfolio'],
-  },
+    name: 'cloud-gallery',
+    url: 'https://cloud-gallery-five.vercel.app/',
+    domain: 'cloud-gallery-five.vercel.app',
+    image: '/portfolio/cloudgallery.jpeg',
+    blurb: 'ZR — Images in Orbit, a portrait, birthday, wedding, fashion and event photography showcase',
+    tags: ['Next.js', 'TailwindCSS'],
+},
   {
     index: '05',
     name: 'Minneth',
@@ -121,6 +119,46 @@ export const projects: Project[] = [
     blurb: 'A native Android shell that mirrors every edit you push to whoiszircon.vercel.app. Pull-to-refresh, status-bar tinting, splash, offline page all themed to match the live site.',
     tags: ['HTML/CSS', 'MobileApp'],
   },
+   {
+    index: '09',
+    name: 'Motor Shop Inventory',
+    url: 'https://motorsample.vercel.app/',
+    domain: 'motorsample.vercel.app',
+    image: '/portfolio/motorsample.png',
+    blurb:
+      'Secure inventory management system with authentication for motor shop operations.',
+    tags: ['React', 'Auth System'],
+  },
+  {
+    index: '10',
+    name: 'slidephoto',
+    url: 'https://slidephoto.vercel.app/',
+    domain: 'slidephoto.vercel.app',
+    image: '/portfolio/slidephoto.jpeg',
+    blurb: 'A visual storytelling site capturing people, light, and moments through portraits, weddings, and events',
+    tags: ['Next.js', 'TailwindCSS'],
+},
+    {
+    index: '11',
+    name: 'VividMe',
+    url: 'https://vividme.vercel.app/',
+    domain: 'vividme.vercel.app',
+    image: '/portfolio/vivid.png',
+    blurb:
+      'Portfolio & booking platform for a freelance photographer. Packages, gallery, contact form.',
+    tags: ['Next.js', 'Portfolio'],
+  },
+
+  {
+    index: '12',
+    name: 'circle-gallery',
+    url: 'https://circle-gallery.vercel.app/',
+    domain: 'circle-gallery.vercel.app',
+    image: '/portfolio/circlegallery.jpeg',
+    blurb: 'ZR Studio — a photography portfolio covering portraits, birthdays, weddings, fashion, and events',
+    tags: ['Next.js', 'TailwindCSS'],
+},
+  
 ]
 
 export const galleryItems = [
