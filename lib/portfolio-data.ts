@@ -45,8 +45,80 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  {
+     {
     index: '01',
+    name: 'Vitalo',
+    url: 'https://vital-o.vercel.app/',
+    domain: 'vital-o.vercel.app',
+    image: '/portfolio/vitalo',
+    blurb: 'Adaptive training plans, nutrition and real Filipino coaches in one calm dashboard.',
+    tags: ['Fitness', 'Habit Tracker'],
+  },
+  {
+    index: '02',
+    name: 'Northview Philippines',
+    url: 'https://northview-ph.vercel.app/',
+    domain: 'northview-ph.vercel.app',
+    image: '/portfolio/northview',
+    blurb: 'Luxury island villas, beach homes and mountain stays managed across the Philippines.',
+    tags: ['Real Estate', 'Property Management'],
+  },
+  {
+    index: '03',
+    name: 'LAKBAY',
+    url: 'https://lakbay-pinas.vercel.app/',
+    domain: 'lakbay-pinas.vercel.app',
+    image: '/portfolio/lakbay',
+    blurb: 'Private island journeys — 32 hand-scouted Philippine sanctuaries, from Palawan to Batanes.',
+    tags: ['Travel', 'Booking'],
+  },
+  {
+    index: '04',
+    name: 'Astral',
+    url: 'https://astral-int.vercel.app/',
+    domain: 'astral-int.vercel.app',
+    image: '/portfolio/astral',
+    blurb: 'The intelligent workspace that helps teams cut through complexity and ship with confidence.',
+    tags: ['SaaS', 'Productivity'],
+  },
+  {
+    index: '05',
+    name: 'LeonHome',
+    url: 'https://leonhome.vercel.app/',
+    domain: 'leonhome.vercel.app',
+    image: '/portfolio/leonhome',
+    blurb: 'Luxury smart-home architecture firm with Lutron, Crestron, Tesla and Bang & Olufsen integration.',
+    tags: ['Architecture', 'Smart Home'],
+  },
+  {
+    index: '06',
+    name: 'Nebula Store',
+    url: 'https://nebulastores.vercel.app/',
+    domain: 'nebulastores.vercel.app',
+    image: '/portfolio/nebulastore',
+    blurb: 'Game store built for Nebula Deck & PC.',
+    tags: ['E-commerce', 'Gaming'],
+  },
+  {
+    index: '07',
+    name: 'Medinovas',
+    url: 'https://medinovas.vercel.app/',
+    domain: 'medinovas.vercel.app',
+    image: '/portfolio/medinovas',
+    blurb: '', // still shows placeholder title "Arena Web Dev App" — needs real content before publishing
+    tags: ['Web App'],
+  },
+  {
+    index: '08',
+    name: 'Geoffrey Designs',
+    url: 'https://geoffreys.vercel.app/',
+    domain: 'geoffreys.vercel.app',
+    image: '/portfolio/geoffreys',
+    blurb: 'Timeless, climate-smart interiors for Filipino homes, resorts and workplaces.',
+    tags: ['Interior Design', 'Portfolio'],
+  },
+  {
+    index: '09',
     name: 'ZirconAI',
     url: 'https://zirconai.vercel.app/',
     domain: 'zirconai.vercel.app',
@@ -56,7 +128,7 @@ export const projects: Project[] = [
     tags: ['AI', 'Next.js'],
   },
   {
-    index: '02',
+    index: '10',
     name: 'DENR Tools',
     url: 'https://denr-tools.vercel.app/',
     domain: 'denr-tools.vercel.app',
@@ -66,7 +138,7 @@ export const projects: Project[] = [
     tags: ['Web App', "Gov't"],
   },
    {
-    index: '03',
+    index: '11',
     name: 'zrcstudio',
     url: 'https://zrcstudio.vercel.app/',
     domain: 'zrcstudio.vercel.app',
@@ -75,7 +147,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TailwindCSS'],
   },
     {
-    index: '04',
+    index: '12',
     name: 'cloud-gallery',
     url: 'https://cloud-gallery-five.vercel.app/',
     domain: 'cloud-gallery-five.vercel.app',
@@ -84,7 +156,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TailwindCSS'],
 },
   {
-    index: '05',
+    index: '13',
     name: 'Minneth',
     url: 'https://minneth-web.vercel.app/',
     domain: 'minneth-web.vercel.app',
@@ -93,7 +165,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Web Portfolio'],
   },
   {
-    index: '06',
+    index: '14',
     name: 'Schedlify',
     url: 'https://schedlify.vercel.app/',
     domain: 'schedlify.vercel.app',
@@ -102,7 +174,7 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Scheduler'],
   },
   {
-    index: '07',
+    index: '15',
     name: 'Courier',
     url: 'https://zcourier.vercel.app/',
     domain: 'zcourier.vercel.app',
@@ -111,7 +183,7 @@ export const projects: Project[] = [
     tags: ['Flutter', 'MobileApp'],
   },
   {
-    index: '08',
+    index: '16',
     name: 'Who is zircon, App',
     url: 'https://who-is-zircon-apk.vercel.app/',
     domain: 'who-is-zircon-apk.vercel.app/',
@@ -120,7 +192,7 @@ export const projects: Project[] = [
     tags: ['HTML/CSS', 'MobileApp'],
   },
    {
-    index: '09',
+    index: '17',
     name: 'Motor Shop Inventory',
     url: 'https://motorsample.vercel.app/',
     domain: 'motorsample.vercel.app',
@@ -130,7 +202,7 @@ export const projects: Project[] = [
     tags: ['React', 'Auth System'],
   },
   {
-    index: '10',
+    index: '18',
     name: 'slidephoto',
     url: 'https://slidephoto.vercel.app/',
     domain: 'slidephoto.vercel.app',
@@ -139,7 +211,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TailwindCSS'],
 },
     {
-    index: '11',
+    index: '19',
     name: 'VividMe',
     url: 'https://vividme.vercel.app/',
     domain: 'vividme.vercel.app',
@@ -150,7 +222,7 @@ export const projects: Project[] = [
   },
 
   {
-    index: '12',
+    index: '20',
     name: 'circle-gallery',
     url: 'https://circle-gallery.vercel.app/',
     domain: 'circle-gallery.vercel.app',
