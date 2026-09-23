@@ -160,7 +160,7 @@ export const projects: Project[] = [
     name: 'Minneth',
     url: 'https://minneth-web.vercel.app/',
     domain: 'minneth-web.vercel.app',
-    image: '/portfolio/Port1.jpeg',
+    image: '/portfolio/Port1.jpg',
     blurb: 'Social Media Content & Video Editor web portfolio.',
     tags: ['Next.js', 'Web Portfolio'],
   },
