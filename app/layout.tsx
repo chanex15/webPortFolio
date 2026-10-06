@@ -2,6 +2,8 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans, DM_Mono } from 'next/font/google'
 import './globals.css'
+import { siteUrl } from '@/lib/site'
+import { profile } from '@/lib/portfolio-data'
 import { SiteBackground } from '@/components/site-background'
 import { Navbar } from '@/components/navbar'
 import { CustomCursor } from '@/components/custom-cursor'
@@ -23,30 +25,53 @@ const dmMono = DM_Mono({
   weight: ['300', '400', '500'],
 })
 
+const title = 'Christian Paul Amantiad — Full-Stack Web Developer'
+const description =
+  'Portfolio of Christian Paul P. Amantiad — a full-stack web developer from Cagayan de Oro, Philippines, building fast, secure, user-centered web applications end to end.'
+
 export const metadata: Metadata = {
-  title: 'Christian Paul Amantiad — Web Developer & Designer',
-  description:
-    'Portfolio of Christian Paul P. Amantiad — an IT graduate from Cagayan de Oro, Philippines building fast, secure, user-centered web applications from concept to deployment.',
-  generator: 'v0.app',
-  icons: {
-    icon: [{ url: '/zircon-logo.png', type: 'image/png' }],
-    shortcut: '/zircon-logo.png',
-    apple: '/zircon-logo.png',
-  },
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  applicationName: 'Who is Zircon — Portfolio',
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
   keywords: [
     'Christian Paul Amantiad',
+    'Full-Stack Web Developer',
     'Web Developer',
     'Philippines',
+    'Cagayan de Oro',
     'Next.js',
+    'TypeScript',
     'Cybersecurity',
     'UI UX Design',
     'Portfolio',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Christian Paul Amantiad — Web Developer & Designer',
-    description:
-      'Fast, secure, user-centered web applications from concept to deployment.',
     type: 'website',
+    url: siteUrl,
+    siteName: 'Christian Paul Amantiad — Portfolio',
+    title,
+    description,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: [{ url: '/zircon-logo.png', type: 'image/png' }],
+    shortcut: '/zircon-logo.png',
+    apple: '/zircon-logo.png',
   },
 }
 
@@ -54,6 +79,34 @@ export const viewport = {
   themeColor: '#000005',
   width: 'device-width',
   initialScale: 1,
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: siteUrl,
+  image: `${siteUrl}${profile.heroImage}`,
+  jobTitle: 'Full-Stack Web Developer',
+  email: `mailto:${profile.emailUser}@${profile.emailDomain}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cagayan de Oro',
+    addressCountry: 'PH',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'University of Science and Technology of Southern Philippines (USTP)',
+  },
+  sameAs: [profile.github, profile.linkedin, profile.facebook],
+  knowsAbout: [
+    'Web Development',
+    'Next.js',
+    'TypeScript',
+    'React',
+    'UI/UX Design',
+    'Cybersecurity',
+  ],
 }
 
 export default function RootLayout({
@@ -67,6 +120,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <CustomCursor />
         <SiteBackground />
         <div className="noise-overlay" aria-hidden="true" />

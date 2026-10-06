@@ -22,9 +22,26 @@ function Facebook({ size = 18 }: { size?: number }) {
   )
 }
 
+function LinkedIn({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z" />
+    </svg>
+  )
+}
+
+function JobStreet({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21.6 5.93 13.03 3.1a1.53 1.53 0 0 0-.96 0L3.5 5.93a.8.8 0 0 0-.55.77v8.52c0 1.52.72 2.96 1.92 3.87l4.06 3.07c.63.48 1.36.79 2.14.91a.8.8 0 0 0 .25 0 5.68 5.68 0 0 0 2.14-.91l4.06-3.07a4.84 4.84 0 0 0 1.92-3.87V6.7a.8.8 0 0 0-.54-.77Zm-4.55 11.35a.75.75 0 0 1-1.05-.15l-1.79-2.38a3.03 3.03 0 0 1-1.72.54h-.02a2.9 2.9 0 0 1-1.9-.72l-1.63 2.35a.75.75 0 1 1-1.23-.86l1.9-2.73a3.65 3.65 0 0 1-.5-1.84v-1.9a.75.75 0 0 1 1.5 0v1.9c0 1.2.95 2.19 2.1 2.19 1.17 0 2.12-.98 2.12-2.19v-1.9a.75.75 0 0 1 1.5 0v1.9c0 .98-.36 1.87-.96 2.55l1.72 2.29a.75.75 0 0 1-.04 1.2Z" />
+    </svg>
+  )
+}
+
 export const metadata = {
   title: 'Contact — Christian Paul Amantiad',
-  description: 'Get in touch for freelance work, collaborations, or just to say hello.',
+  description:
+    'Get in touch about web development roles, freelance projects, and collaborations.',
 }
 
 const platforms = [
@@ -33,6 +50,18 @@ const platforms = [
     label: 'GitHub',
     value: profile.githubHandle,
     href: profile.github,
+  },
+  {
+    icon: LinkedIn,
+    label: 'LinkedIn',
+    value: 'Christian Paul Amantiad',
+    href: profile.linkedin,
+  },
+  {
+    icon: JobStreet,
+    label: 'JobStreet',
+    value: 'ph.jobstreet.com/profiles',
+    href: profile.jobstreet,
   },
   {
     icon: Facebook,
@@ -53,10 +82,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="px-6 pt-36 pb-16 md:px-12">
+      <section className="px-4 pt-32 pb-16 sm:px-6 md:px-12 md:pt-36">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <SectionHeading eyebrow="Get in Touch" title="Let's build something" highlight="together" />
+            <SectionHeading eyebrow="Contact" title="Let's work" highlight="together" />
             <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
               Whether you have a project in mind, a question, or just want to connect — my inbox is
               always open. I&apos;ll get back to you as soon as I can.
@@ -65,19 +94,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-28 md:px-12">
+      <section className="px-4 pb-28 sm:px-6 md:px-12">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Left: contact details */}
           <Reveal className="space-y-5">
             <Link
-              href={`mailto:${email}`}
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-start gap-4 rounded-2xl glass p-6 transition-all hover:-translate-y-1 hover:border-aurora/30"
             >
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-aurora/20 bg-aurora/5 text-aurora">
                 <Mail size={18} />
               </div>
               <div className="min-w-0">
-                <div className="font-mono text-[0.58rem] uppercase tracking-[0.3em] text-muted-foreground">
+                <div className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
                   Email
                 </div>
                 <div className="mt-1 truncate font-medium text-foreground group-hover:text-aurora">
@@ -91,7 +122,7 @@ export default function ContactPage() {
                 <MapPin size={18} />
               </div>
               <div>
-                <div className="font-mono text-[0.58rem] uppercase tracking-[0.3em] text-muted-foreground">
+                <div className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
                   Location
                 </div>
                 <div className="mt-1 font-medium text-foreground">{profile.location}</div>
@@ -99,7 +130,7 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-2xl glass p-6">
-              <div className="mb-4 font-mono text-[0.58rem] uppercase tracking-[0.3em] text-muted-foreground">
+              <div className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
                 Find me online
               </div>
               <div className="space-y-2">

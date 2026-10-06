@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer'
 import { ProjectCard } from '@/components/project-card'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/reveal'
-import { projects, competencies } from '@/lib/portfolio-data'
+import { projects } from '@/lib/portfolio-data'
 import { ArrowRight, User, FolderGit2, Briefcase } from 'lucide-react'
 
 const quickLinks = [
@@ -34,14 +34,14 @@ export default function HomePage() {
       <Hero />
 
       {/* Featured projects teaser */}
-      <section className="px-6 py-24 md:px-12">
+      <section className="px-4 py-20 sm:px-6 sm:py-24 md:px-12">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionHeading
               center
-              eyebrow="Things I Built"
+              eyebrow="Portfolio"
               title="Featured"
-              highlight="Work"
+              highlight="projects"
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -52,7 +52,7 @@ export default function HomePage() {
           <Reveal className="mt-12 flex justify-center">
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-2 rounded-md border border-aurora/30 px-6 py-3 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-aurora transition-all hover:-translate-y-0.5 hover:bg-aurora/8"
+              className="group inline-flex items-center gap-2 rounded-md border border-aurora/30 px-6 py-3 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-aurora transition-all hover:-translate-y-0.5 hover:bg-aurora/8"
             >
               View All Projects
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -61,27 +61,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Marquee of competencies */}
-      <section className="overflow-hidden border-y border-border py-6">
-        <div className="flex gap-10 whitespace-nowrap">
-          <div className="flex animate-[marquee_30s_linear_infinite] gap-10">
-            {[...competencies, ...competencies].map((c, i) => (
-              <span
-                key={i}
-                className="font-mono text-sm uppercase tracking-[0.3em] text-muted-foreground"
-              >
-                {c} <span className="text-aurora">✦</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Quick navigation */}
-      <section className="px-6 py-24 md:px-12">
+      <section className="px-4 py-20 sm:px-6 sm:py-24 md:px-12">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <SectionHeading center eyebrow="Explore" title="Get to" highlight="know me" />
+            <SectionHeading center eyebrow="Explore" title="Explore my" highlight="portfolio" />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {quickLinks.map((link, i) => (
@@ -97,7 +81,7 @@ export default function HomePage() {
                   <p className="mt-2 flex-1 text-pretty text-sm leading-relaxed text-muted-foreground">
                     {link.desc}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-aurora">
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-aurora">
                     Explore
                     <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                   </span>

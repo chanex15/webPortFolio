@@ -53,7 +53,7 @@ export default async function InstallPage() {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(pageUrl)}&margin=10`
 
   return (
-    <div className="relative px-6 pt-32 pb-24 md:px-12 md:pt-40 md:pb-32">
+    <div className="relative px-4 pt-28 pb-24 sm:px-6 md:px-12 md:pt-40 md:pb-32">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <SectionHeading
@@ -78,7 +78,7 @@ export default async function InstallPage() {
             <div className="grid gap-0 md:grid-cols-[1fr_240px]">
               <div className="flex flex-col gap-6 p-8 md:p-10">
                 <div>
-                  <div className="mb-2 flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-aurora">
+                  <div className="mb-2 flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-aurora">
                     <Smartphone size={12} />
                     Android only — sideload install
                   </div>
@@ -95,7 +95,7 @@ export default async function InstallPage() {
                 <a
                   href={APK_URL}
                   download="who-is-zircon.apk"
-                  className="group inline-flex items-center justify-center gap-3 rounded-xl border border-border bg-background px-5 py-3 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground transition-all hover:border-aurora/40 hover:text-foreground"
+                  className="group inline-flex items-center justify-center gap-3 rounded-xl border border-border bg-background px-5 py-3 font-mono text-[0.75rem] uppercase tracking-[0.3em] text-muted-foreground transition-all hover:border-aurora/40 hover:text-foreground"
                 >
                   <ArrowDownToLine size={14} />
                   Or just download the .apk ({formatBytes(APK_BYTES)})
@@ -136,7 +136,7 @@ export default async function InstallPage() {
                     priority
                   />
                 </div>
-                <div className="flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-aurora">
+                <div className="flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.25em] text-aurora">
                   <ScanLine size={11} />
                   scan to install
                 </div>
@@ -159,7 +159,7 @@ export default async function InstallPage() {
         <Reveal delay={0.22} className="mt-12 text-center">
           <a
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.4em] text-muted-foreground/70 transition-colors hover:text-aurora"
+            className="inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.4em] text-muted-foreground/70 transition-colors hover:text-aurora"
           >
             <ShieldCheck size={11} />
             back to portfolio →

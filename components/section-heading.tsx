@@ -18,7 +18,7 @@ export function SectionHeading({
       {eyebrow && (
         <div
           className={cn(
-            'mb-4 flex items-center gap-3 font-mono text-[0.6rem] uppercase tracking-[0.4em] text-aurora',
+            'mb-4 flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.4em] text-aurora',
             center && 'justify-center',
           )}
         >

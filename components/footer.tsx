@@ -22,7 +22,7 @@ export function Footer() {
   return (
     <footer className="relative z-10 border-t border-border px-6 py-10 md:px-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
-        <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+        <span className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
           © 2026 {profile.name} — All rights reserved
         </span>
         <div className="flex items-center gap-4">

@@ -76,8 +76,21 @@ function BlueStarField({ count = 1200 }: { count?: number }) {
   )
 }
 
+function useIsCompactScreen() {
+  const [compact, setCompact] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const update = () => setCompact(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return compact
+}
+
 export function SiteBackground() {
   const [mounted, setMounted] = useState(false)
+  const isCompact = useIsCompactScreen()
   useEffect(() => setMounted(true), [])
 
   return (
@@ -137,8 +150,8 @@ export function SiteBackground() {
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           dpr={[1, 1.5]}
         >
-          <StarField />
-          <BlueStarField />
+          <StarField count={isCompact ? 900 : 2200} />
+          <BlueStarField count={isCompact ? 450 : 1200} />
         </Canvas>
       )}
 

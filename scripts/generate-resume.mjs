@@ -1,11 +1,11 @@
-import PDFDocument from './node_modules/pdfkit/js/pdfkit.js'
+import PDFDocument from 'pdfkit'
 import fs from 'node:fs'
 import path from 'node:path'
 
 // ─── Output path ──────────────────────────────────────────────────────────────
-const OUT = path.resolve('christian-paul-amantiad-resume.pdf')
+const OUT = path.resolve('public/christian-paul-amantiad-resume.pdf')
 
-// ─── Palette ──────────────────────────────────────────────────────────────────
+// ─── Palette (matches portfolio brand) ────────────────────────────────────────
 const INK        = '#0f172a'
 const MUTED      = '#475569'
 const ACCENT     = '#0d9488'
@@ -17,55 +17,116 @@ const SIDEBAR_DIM= '#94a3b8'
 const BADGE_BG   = '#1e293b'
 const BADGE_TXT  = '#cbd5e1'
 
+// ─── Content (mirrors lib/portfolio-data.ts) ──────────────────────────────────
+const DATA = {
+  name1: 'Christian Paul',
+  name2: 'P. Amantiad',
+  title: 'Full-Stack Web Developer',
+  email: 'Christianamantiad122@gmail.com',
+  phone: '+63 946 108 1979',
+  location: 'Balulang, Cagayan de Oro City, Philippines',
+  site: 'whoiszircon.vercel.app',
+  github: 'github.com/chanex15',
+  linkedin: 'linkedin.com/in/christian-paul-amantiad-60107b36b',
+
+  objective:
+    'A detail-oriented full-stack web developer who designs, builds, and deploys complete web applications end to end — from first concept to a fast, polished, production-ready site. Looking to bring clean interfaces, solid backends, and secure delivery practices to a team or client project.',
+
+  skills: {
+    Frontend: ['HTML & CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'TailwindCSS', 'Responsive Design'],
+    Backend: ['Node.js', 'PHP', 'Laravel', 'Python', 'Django', 'REST APIs', 'MySQL', 'PostgreSQL', 'Firebase', 'Supabase', 'Auth Systems'],
+    Tools: ['Git & GitHub', 'Figma', 'VS Code', 'Linux', 'Vercel', 'Cloudflare', 'Wireshark', 'Nmap'],
+  },
+
+  languages: [
+    ['Filipino', 'Native'],
+    ['English', 'Professional'],
+  ],
+
+  experience: [
+    {
+      title: 'Freelance Web Developer',
+      date: '2024 – Present',
+      sub: 'Self-Employed · Remote',
+      bullets: [
+        'Design and develop custom websites and web applications for clients across industries — handling UI/UX design, development, and deployment end to end.',
+        'Deliver responsive, performant, visually polished digital experiences on Vercel, with custom domains and production monitoring.',
+        'Manage the full client lifecycle: requirements, design feedback loops, launch, and post-launch support.',
+      ],
+    },
+    {
+      title: 'Project Debugging & Code Support',
+      date: 'March 2026',
+      sub: '2nd-Year IT Students · Bugo, Cagayan de Oro',
+      bullets: [
+        'Traced and fixed JavaScript and Python errors blocking a school POS project; resolved Firebase database issues.',
+        'Walked the team through the root cause of each bug so they could debug independently going forward.',
+      ],
+    },
+    {
+      title: 'Front-End Developer — Personal Projects',
+      date: '2024 – 2025',
+      sub: 'Personal Projects & Open Source',
+      bullets: [
+        'Built and shipped tools for government data automation, portfolio sites, and interactive web experiences.',
+        'Focused on clean architecture, responsive design, and modern CSS (animations, glassmorphism).',
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      title: 'DENR Tools',
+      tags: ['Next.js', 'TypeScript'],
+      desc: 'Custom web app for the Department of Environment and Natural Resources automating repetitive data tasks — improving operational efficiency and cutting manual processing time.',
+      link: 'denr-tools.vercel.app',
+    },
+    {
+      title: 'Schedlify',
+      tags: ['Next.js', 'TypeScript'],
+      desc: 'Weekly schedule planner with image/PDF export, built for students and planners.',
+      link: 'schedlify.vercel.app',
+    },
+    {
+      title: 'Motor Shop Inventory',
+      tags: ['React', 'Supabase'],
+      desc: 'Secure inventory management system with authentication for motor shop operations.',
+      link: 'motorsample.vercel.app',
+    },
+    {
+      title: 'ZirconAI',
+      tags: ['Next.js', 'AI'],
+      desc: 'Experimental AI chatbot with natural language processing and context-aware responses.',
+      link: 'zirconai.vercel.app',
+    },
+  ],
+
+  education: {
+    degree: 'Bachelor of Science in Information Technology',
+    school: 'University of Science and Technology of Southern Philippines (USTP)',
+    years: '2022 – 2026',
+  },
+}
+
 // ─── Page setup ───────────────────────────────────────────────────────────────
 const doc = new PDFDocument({ size: 'A4', margin: 0, bufferPages: true })
 doc.pipe(fs.createWriteStream(OUT))
 
-const PAGE_W  = doc.page.width   // 595.28
-const PAGE_H  = doc.page.height  // 841.89
-const SB_W    = 210              // sidebar width
-const SB_PAD  = 24               // sidebar horizontal padding
+const PAGE_W  = doc.page.width
+const PAGE_H  = doc.page.height
+const SB_W    = 210
+const SB_PAD  = 24
 const SW      = SB_W - SB_PAD * 2
 const SX      = SB_PAD
-
 const MAIN_X  = SB_W + 32
 const MAIN_W  = PAGE_W - MAIN_X - 28
 
 // ─── Sidebar background ───────────────────────────────────────────────────────
 doc.rect(0, 0, SB_W, PAGE_H).fill(SIDEBAR_BG)
 
-// ─── Helper: draw circular photo ──────────────────────────────────────────────
-function drawCircularPhoto(imgPath, cx, cy, r) {
-  // Use a pre-clipped circular PNG - just draw it centered
-  doc.image(imgPath, cx - r, cy - r, { width: r * 2, height: r * 2 })
-  // Teal ring around photo
-  doc.circle(cx, cy, r + 2)
-    .lineWidth(2.5)
-    .strokeColor(ACCENT)
-    .stroke()
-}
+// ─── Sidebar helpers ──────────────────────────────────────────────────────────
+let sy = 44
 
-// ─── Profile photo ────────────────────────────────────────────────────────────
-const PHOTO_R  = 52
-const PHOTO_CX = SB_W / 2
-const PHOTO_CY = 70
-drawCircularPhoto('./profile_circle.png', PHOTO_CX, PHOTO_CY, PHOTO_R)
-
-// ─── Sidebar state ────────────────────────────────────────────────────────────
-let sy = PHOTO_CY + PHOTO_R + 18
-
-// ─── Name ─────────────────────────────────────────────────────────────────────
-doc.fillColor(WHITE).font('Helvetica-Bold').fontSize(16)
-  .text('Christian Paul', SX, sy, { width: SW, align: 'center' })
-sy = doc.y + 0
-doc.fillColor(ACCENT).font('Helvetica-Bold').fontSize(16)
-  .text('P. Amantiad', SX, sy, { width: SW, align: 'center' })
-sy = doc.y + 4
-doc.fillColor(SIDEBAR_DIM).font('Helvetica').fontSize(8.5)
-  .text('Web Developer & Virtual Assistant', SX, sy, { width: SW, align: 'center' })
-sy = doc.y + 20
-
-// ─── Sidebar section heading ───────────────────────────────────────────────────
 function sbHeading(label) {
   doc.fillColor(ACCENT).font('Helvetica-Bold').fontSize(8.5)
     .text(label.toUpperCase(), SX, sy, { width: SW, characterSpacing: 1.4 })
@@ -75,11 +136,10 @@ function sbHeading(label) {
   sy += 8
 }
 
-// ─── Sidebar plain lines ────────────────────────────────────────────────────
-function sbLines(lines, { size = 8, color = SIDEBAR_FG, bold = false, gap = 3.5 } = {}) {
+function sbLines(lines, { size = 8, color = SIDEBAR_FG, gap = 3.5 } = {}) {
   for (const l of lines) {
     doc.fillColor(color)
-      .font(bold ? 'Helvetica-Bold' : 'Helvetica')
+      .font('Helvetica')
       .fontSize(size)
       .text(l, SX, sy, { width: SW })
     sy = doc.y + gap
@@ -87,24 +147,13 @@ function sbLines(lines, { size = 8, color = SIDEBAR_FG, bold = false, gap = 3.5 
   sy += 4
 }
 
-// ─── Sidebar icon line ──────────────────────────────────────────────────────
-function sbIconLine(icon, text) {
-  // Draw a small teal square as the "icon"
+function sbIconLine(text) {
   doc.rect(SX, sy + 2, 6, 6).fill(ACCENT)
-  doc.fillColor(SIDEBAR_FG).font('Helvetica').fontSize(8).text(text, SX + 10, sy, { width: SW - 10 })
+  doc.fillColor(SIDEBAR_FG).font('Helvetica').fontSize(8)
+    .text(text, SX + 10, sy, { width: SW - 10 })
   sy = doc.y + 3
 }
 
-// ─── CONTACT ─────────────────────────────────────────────────────────────────
-sbHeading('Contact')
-sbIconLine('>', 'Christianamantiad122@gmail.com')
-sbIconLine('T', '+63 946 108 1979')
-sbIconLine('@', 'Balulang, Cagayan de Oro City,\n  Philippines')
-sy += 2
-sbIconLine('W', 'whoiszircon.pages.dev')
-sy += 4
-
-// ─── Badge helper ─────────────────────────────────────────────────────────────
 function sbBadgeRow(badges) {
   const BADGE_H    = 14
   const BADGE_VPAD = 3
@@ -135,29 +184,40 @@ function sbBadgeRow(badges) {
   sy = rowY + BADGE_H + 10
 }
 
-// ─── Sub-category label ───────────────────────────────────────────────────────
 function sbSubLabel(label) {
   doc.fillColor(SIDEBAR_DIM).font('Helvetica-Bold').fontSize(7.5)
     .text(label, SX, sy, { width: SW, characterSpacing: 0.8 })
   sy = doc.y + 4
 }
 
-// ─── SKILLS ──────────────────────────────────────────────────────────────────
+// ─── Sidebar header (no photo — cleaner and no image dependency) ─────────────
+doc.fillColor(WHITE).font('Helvetica-Bold').fontSize(16)
+  .text(DATA.name1, SX, sy, { width: SW, align: 'center' })
+sy = doc.y
+doc.fillColor(ACCENT).font('Helvetica-Bold').fontSize(16)
+  .text(DATA.name2, SX, sy, { width: SW, align: 'center' })
+sy = doc.y + 4
+doc.fillColor(SIDEBAR_DIM).font('Helvetica').fontSize(8.5)
+  .text(DATA.title, SX, sy, { width: SW, align: 'center' })
+sy += 20
+
+// ─── Sidebar content ──────────────────────────────────────────────────────────
+sbHeading('Contact')
+sbIconLine(DATA.email)
+sbIconLine(DATA.phone)
+sbIconLine(DATA.location)
+sbIconLine(DATA.site)
+sbIconLine(DATA.github)
+sbIconLine(DATA.linkedin)
+sy += 4
+
 sbHeading('Skills')
+for (const [group, skills] of Object.entries(DATA.skills)) {
+  sbSubLabel(group.toUpperCase())
+  sbBadgeRow(skills)
+}
 
-sbSubLabel('FRONTEND')
-sbBadgeRow(['TAILWINDCSS', 'CSS & HTML', 'RESPONSIVE', 'JAVASCRIPT', 'TYPESCRIPT', 'REACT.JS'])
-
-sbSubLabel('BACKEND')
-sbBadgeRow(['REST.API', 'PYTHON', 'DJANGO', 'NODE.JS', 'MYSQL', 'POSTGRESQL'])
-
-sbSubLabel('TOOLS')
-sbBadgeRow(['GIT & GITHUB', 'FIGMA', 'VS CODE', 'NPM', 'LINUX', 'VERCEL', 'CLOUDFLARE'])
-
-// ─── LANGUAGES ───────────────────────────────────────────────────────────────
 sbHeading('Languages')
-
-// Two-column language rows
 function sbLanguageRow(lang, level) {
   doc.fillColor(SIDEBAR_FG).font('Helvetica').fontSize(8.5)
     .text(lang, SX, sy, { lineBreak: false })
@@ -165,10 +225,9 @@ function sbLanguageRow(lang, level) {
     .text(level, SX + SW - 55, sy, { width: 55, align: 'right', lineBreak: false })
   sy += 14
 }
-sbLanguageRow('Filipino', 'Native')
-sbLanguageRow('English', 'Professional')
+for (const [lang, level] of DATA.languages) sbLanguageRow(lang, level)
 
-// ─── MAIN COLUMN ─────────────────────────────────────────────────────────────
+// ─── Main column helpers ──────────────────────────────────────────────────────
 let my = 44
 
 function mainHeading(label) {
@@ -182,23 +241,18 @@ function mainHeading(label) {
 }
 
 function mainParagraph(text) {
-  // Teal left border block
-  doc.rect(MAIN_X, my, 2.5, 999).fill(ACCENT) // placeholder height
   const startY = my
   doc.fillColor(MUTED).font('Helvetica').fontSize(9)
-    .text(text, MAIN_X + 10, my, { width: MAIN_W - 10, lineGap: 2.5, align: 'justify' })
+    .text(text, MAIN_X, my, { width: MAIN_W, lineGap: 2.5, align: 'justify' })
   const endY = doc.y
-  // Redraw teal bar with correct height
-  doc.rect(MAIN_X, startY, 2.5, endY - startY).fill(ACCENT)
+  doc.rect(MAIN_X - 8, startY, 2.5, endY - startY).fill(ACCENT)
   my = endY + 10
 }
 
-function mainEntry(title, dateBadge, sub, bullets, tags) {
-  // Title + date badge on same line
+function mainEntry(title, dateBadge, sub, bullets) {
   const titleStartY = my
 
   if (dateBadge) {
-    // Draw date badge first (right-aligned)
     const badgeW = doc.font('Helvetica').fontSize(7.5).widthOfString(dateBadge) + 12
     const badgeX = MAIN_X + MAIN_W - badgeW
     doc.roundedRect(badgeX, my, badgeW, 13, 3)
@@ -207,12 +261,13 @@ function mainEntry(title, dateBadge, sub, bullets, tags) {
       .text(dateBadge, badgeX + 6, my + 3, { lineBreak: false })
   }
 
-  // Teal circle dot
   doc.circle(MAIN_X + 5, titleStartY + 6, 4)
     .fillAndStroke(ACCENT, ACCENT)
 
   doc.fillColor(INK).font('Helvetica-Bold').fontSize(10.5)
-    .text(title, MAIN_X + 16, my, { width: MAIN_W - 16 - (dateBadge ? doc.font('Helvetica').fontSize(7.5).widthOfString(dateBadge) + 18 : 0) })
+    .text(title, MAIN_X + 16, my, {
+      width: MAIN_W - 16 - (dateBadge ? doc.font('Helvetica').fontSize(7.5).widthOfString(dateBadge) + 18 : 0),
+    })
   my = doc.y + 1
 
   if (sub) {
@@ -225,7 +280,8 @@ function mainEntry(title, dateBadge, sub, bullets, tags) {
 
   for (const b of bullets) {
     const bY = my
-    doc.fillColor(ACCENT).font('Helvetica-Bold').fontSize(8).text('▸', MAIN_X + 16, bY, { width: 10, lineBreak: false })
+    doc.fillColor(ACCENT).font('Helvetica-Bold').fontSize(8)
+      .text('▸', MAIN_X + 16, bY, { width: 10, lineBreak: false })
     doc.fillColor(MUTED).font('Helvetica').fontSize(8.5)
       .text(b, MAIN_X + 28, bY, { width: MAIN_W - 28, lineGap: 1.5 })
     my = doc.y + 3
@@ -234,27 +290,18 @@ function mainEntry(title, dateBadge, sub, bullets, tags) {
   my += 6
 }
 
-// Project card
 function projectCard(title, techTags, desc, link) {
   const cardX = MAIN_X
   const cardW = MAIN_W
   const cardStartY = my
 
-  // Estimate content height
-  const descHeight = 28
-  const cardH = 14 + descHeight + (link ? 14 : 0) + 10
-
-  // Card background
-  doc.roundedRect(cardX, cardStartY, cardW, cardH, 5)
-    .fillAndStroke('#f8fafc', LINE_LIGHT)
+  doc.roundedRect(cardX, cardStartY, cardW, 10, 5).fillAndStroke('#f8fafc', LINE_LIGHT)
 
   let cy = cardStartY + 10
 
-  // Title
   doc.fillColor(INK).font('Helvetica-Bold').fontSize(10)
     .text(title, cardX + 10, cy, { lineBreak: false })
 
-  // Tech tags (right-aligned)
   if (techTags && techTags.length) {
     const tagsText = techTags.join(' · ')
     const tagsW    = doc.font('Helvetica-Bold').fontSize(7.5).widthOfString(tagsText) + 16
@@ -267,22 +314,20 @@ function projectCard(title, techTags, desc, link) {
 
   cy += 16
 
-  // Description
   doc.fillColor(MUTED).font('Helvetica').fontSize(8.5)
     .text(desc, cardX + 10, cy, { width: cardW - 20, lineGap: 1.5 })
   cy = doc.y + 4
 
-  // Link
   if (link) {
     doc.fillColor(ACCENT).font('Helvetica-Oblique').fontSize(8)
       .text('-> ' + link, cardX + 10, cy, { width: cardW - 20 })
     cy = doc.y + 4
   }
 
-  my = Math.max(cy + 8, cardStartY + cardH + 6)
+  my = cy + 8
 }
 
-// ─── MAIN CONTENT: "About Me" heading ────────────────────────────────────────
+// ─── Main content ─────────────────────────────────────────────────────────────
 doc.fillColor(INK).font('Helvetica-Bold').fontSize(22)
   .text('About Me', MAIN_X, my, { width: MAIN_W })
 my = doc.y + 2
@@ -290,72 +335,23 @@ doc.moveTo(MAIN_X, my).lineTo(MAIN_X + 50, my)
   .strokeColor(ACCENT).lineWidth(2.5).stroke()
 my += 14
 
-// ─── OBJECTIVE ───────────────────────────────────────────────────────────────
 mainHeading('Objective')
-mainParagraph(
-  'A motivated and detail-oriented BS Information Technology graduate with hands-on experience in web development, client management, and administrative support. Looking to apply strong organizational, communication, and technical skills as a Virtual Assistant to help businesses run efficiently and effectively in a remote setting.'
-)
+mainParagraph(DATA.objective)
 
-// ─── WORK EXPERIENCE ─────────────────────────────────────────────────────────
 mainHeading('Work Experience')
-mainEntry(
-  'Freelance Virtual Assistant & Web Developer',
-  '2022 – Present',
-  'Self-Employed · Remote',
-  [
-    'Managed client communications, project timelines, and deliverables for multiple remote clients simultaneously.',
-    'Built and maintained responsive websites based on client briefs, handling all coordination from planning to launch.',
-    'Organized digital files, prepared reports, and maintained online records to keep client operations running smoothly.',
-    'Conducted online research and compiled findings into clear, actionable summaries for client decision-making.',
-  ]
-)
-mainEntry(
-  'Sales Associate',
-  '2021 – 2022',
-  'RRJ / Mr. Lee · Retail',
-  [
-    'Handled customer inquiries professionally, consistently delivering a positive and helpful service experience.',
-    'Coordinated with team members to maintain store operations and achieve sales targets.',
-    'Developed strong communication and problem-solving skills while managing diverse customer needs daily.',
-  ]
-)
+for (const e of DATA.experience) mainEntry(e.title, e.date, e.sub, e.bullets)
 
-// ─── PROJECTS ────────────────────────────────────────────────────────────────
 mainHeading('Projects')
-projectCard(
-  'Personal Portfolio Website',
-  ['HTML', 'CSS', 'JavaScript'],
-  'Designed and deployed a fully responsive personal portfolio. Managed hosting, domain setup, and ongoing content updates independently.',
-  'whoiszircon.pages.dev'
-)
-projectCard(
-  'Client Website Projects (Freelance)',
-  ['HTML', 'CSS', 'JS', 'WordPress'],
-  'Completed multiple client websites end-to-end — gathered requirements, designed layouts, applied feedback, and delivered on schedule while managing all client communications.',
-  null
-)
-projectCard(
-  'Task & Admin Management Tool',
-  ['Python', 'Django'],
-  'Built a simple web-based task tracker to manage to-dos, deadlines, and notes — demonstrating ability to create practical digital tools that improve organization and workflow.',
-  null
-)
+for (const p of DATA.projects) projectCard(p.title, p.tags, p.desc, p.link)
 
-// ─── EDUCATION ───────────────────────────────────────────────────────────────
 mainHeading('Education')
-mainEntry(
-  'Bachelor of Science in Information Technology',
-  null,
-  null,
-  []
-)
-// Uni name in italic accent below
+mainEntry(DATA.education.degree, null, null, [])
 my -= 10
 doc.fillColor(ACCENT).font('Helvetica-Oblique').fontSize(8.5)
-  .text('University of Science and Technology of Southern Philippines (USTP)', MAIN_X + 16, my, { width: MAIN_W - 16 })
+  .text(DATA.education.school, MAIN_X + 16, my, { width: MAIN_W - 16 })
 my = doc.y + 3
 doc.fillColor(MUTED).font('Helvetica').fontSize(8.5)
-  .text('2022 – 2026', MAIN_X + 16, my, { width: MAIN_W - 16 })
+  .text(DATA.education.years, MAIN_X + 16, my, { width: MAIN_W - 16 })
 
 // ─── Done ─────────────────────────────────────────────────────────────────────
 doc.end()

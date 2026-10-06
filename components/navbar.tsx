@@ -40,7 +40,7 @@ export function Navbar() {
           : 'border-b border-transparent',
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 md:px-12">
         <Link
           href="/"
           className="group flex items-center gap-2.5"
@@ -69,7 +69,7 @@ export function Navbar() {
                 <Link
                   href={l.href}
                   className={cn(
-                    'relative font-mono text-[0.65rem] uppercase tracking-[0.35em] transition-colors',
+                    'relative font-mono text-[0.75rem] uppercase tracking-[0.35em] transition-colors',
                     active
                       ? 'text-foreground'
                       : 'text-muted-foreground hover:text-foreground',
@@ -103,7 +103,7 @@ export function Navbar() {
       <div
         className={cn(
           'overflow-hidden border-t border-border bg-[rgba(4,6,26,0.95)] backdrop-blur-2xl transition-[max-height] duration-400 md:hidden',
-          open ? 'max-h-96' : 'max-h-0 border-t-transparent',
+          open ? 'max-h-[420px]' : 'max-h-0 border-t-transparent',
         )}
       >
         <ul className="flex flex-col gap-1 px-6 py-4">

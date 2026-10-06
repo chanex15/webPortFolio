@@ -120,7 +120,8 @@
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #04061a;
@@ -128,6 +129,52 @@
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(var(--aurora1), var(--aurora4));
   border-radius: 10px;
+}
+
+/* Hide page scrollbar until the pointer is over the page (desktop) */
+@media (pointer: fine) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  html:hover {
+    scrollbar-color: rgba(0, 255, 200, 0.35) #04061a;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  html:hover::-webkit-scrollbar-track {
+    background: #04061a;
+  }
+  html:hover::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--aurora1), var(--aurora4));
+  }
+}
+
+/* ── Slim scrollbar (inline scroll areas) — hidden until hover ── */
+.scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.scrollbar-slim:hover {
+  scrollbar-color: rgba(0, 255, 200, 0.45) transparent;
+}
+.scrollbar-slim::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scrollbar-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-slim::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+.scrollbar-slim:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 200, 0.45);
 }
 
 /* ── Noise overlay ── */

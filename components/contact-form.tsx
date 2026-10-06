@@ -22,6 +22,16 @@ export function ContactForm() {
     const formData = new FormData(form)
     formData.append('access_key', ACCESS_KEY)
 
+    // Honeypot: real users never fill this hidden field. If a bot does,
+    // pretend success (so it doesn't retry) but silently drop the message.
+    if (formData.get('botcheck')) {
+      setSent(true)
+      form.reset()
+      setLoading(false)
+      setTimeout(() => setSent(false), 4000)
+      return
+    }
+
     const object = Object.fromEntries(formData)
     const json = JSON.stringify(object)
 
@@ -61,7 +71,17 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-3xl glass p-8 md:p-10">
+    <form onSubmit={handleSubmit} className="flex h-full flex-col rounded-3xl glass p-8 md:p-10">
+      {/* Honeypot field — hidden from humans, irresistible to bots */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        className="hidden"
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       {error && (
         <div className="mb-5 rounded-lg border border-red-500/50 bg-red-500/10 px-4 py-2 text-sm text-red-400">
           {error}
@@ -74,8 +94,8 @@ export function ContactForm() {
       <div className="mt-5">
         <Field label="Subject" name="subject" placeholder="What's this about?" />
       </div>
-      <div className="mt-5">
-        <label className="mb-2 block font-mono text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+      <div className="mt-5 flex flex-1 flex-col">
+        <label className="mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
           Message
         </label>
         <textarea
@@ -83,13 +103,13 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Tell me about your project..."
-          className="w-full resize-none rounded-xl border border-input bg-white/[0.02] px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-aurora/50 focus:ring-1 focus:ring-aurora/30"
+          className="min-h-[140px] w-full flex-1 resize-none rounded-xl border border-input bg-white/[0.02] px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-aurora/50 focus:ring-1 focus:ring-aurora/30"
         />
       </div>
       <button
         type="submit"
         disabled={sent || loading}
-        className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-aurora px-7 py-3.5 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-primary-foreground transition-all hover:-translate-y-0.5 glow-teal disabled:opacity-70"
+        className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-aurora px-7 py-3.5 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-primary-foreground transition-all hover:-translate-y-0.5 glow-teal disabled:opacity-70"
       >
         {loading ? (
           <>
@@ -125,7 +145,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-2 block font-mono text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+      <label className="mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
         {label}
       </label>
       <input

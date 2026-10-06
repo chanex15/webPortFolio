@@ -8,24 +8,26 @@ export const profile = {
   age: 22,
   gradYear: '2025-2026',
   school: 'USTP — Southern Philippines',
-  goal: 'Cybersecurity Professional',
+  goal: 'Web dev & IT support',
   github: 'https://github.com/chanex15',
   githubHandle: 'github.com/chanex15',
   facebook: 'https://www.facebook.com/chris.tian.39265/',
+  linkedin: 'https://www.linkedin.com/in/christian-paul-amantiad-60107b36b/',
+  jobstreet: 'https://ph.jobstreet.com/profiles/christianpaul-amantiad-dcr0zJ4NrW',
   telegram: 'https://web.telegram.org/a/#5206886094',
   emailUser: 'Christianamantiad122',
   emailDomain: 'gmail.com',
   tagline: 'Building fast, user-centered websites from concept to deployment.',
-  heroImage: '/portfolio/me.jpg',
+  heroImage: '/portfolio/me2.jpg',
   aboutImage: '/portfolio/me2.jpg',
   resume: '/christian-paul-amantiad-resume.pdf',
 }
 
-export const roleTags = ['Web Dev', 'UI / UX','Programmer','Freelancer']
+export const roleTags = ['Web Dev', 'UI / UX', 'Programmer', 'Freelancer']
 
 export const aboutParagraphs = [
-  "I'm an Information Technology graduate based in Cagayan de Oro City, Philippines. I specialize in building secure, user-centered web applications — from concept to deployment.",
-  'I specialize in transforming ideas into live web applications, managing everything from initial design to final deployment. My professional focus lies at the intersection of software development and cybersecurity, where I strive to build applications that are as secure as they are user-friendly.',
+  "I'm an Information Technology graduate and full-stack web developer based in Cagayan de Oro City, Philippines. I design, build, and deploy complete web applications — owning each project end to end, from first concept to a fast, polished, production-ready site.",
+  'My work sits at the intersection of software engineering and cybersecurity. I build interfaces that are intuitive and responsive, then back them with secure, well-structured code — so everything I ship is as reliable and safe as it is easy to use.',
 ]
 
 export const stats = [
@@ -34,9 +36,12 @@ export const stats = [
   { num: 'CDO', label: 'Philippines' },
 ]
 
+export type ProjectCategory = 'pure-code' | 'wordpress' | 'system-admin'
+
 export type Project = {
   index: string
   name: string
+  category: ProjectCategory
   url: string
   domain: string
   image: string
@@ -48,189 +53,284 @@ export const projects: Project[] = [
      {
     index: '01',
     name: 'Vitalo',
+    category: 'pure-code',
     url: 'https://vital-o.vercel.app/',
     domain: 'vital-o.vercel.app',
     image: '/portfolio/vitalo.jpg',
     blurb: 'Adaptive training plans, nutrition and real Filipino coaches in one calm dashboard.',
-    tags: ['Fitness', 'Habit Tracker'],
+    tags: ['TypeScript', 'Next.js', 'Fitness', 'Habit Tracker'],
   },
   {
     index: '02',
     name: 'Northview Philippines',
+    category: 'pure-code',
     url: 'https://northview-ph.vercel.app/',
     domain: 'northview-ph.vercel.app',
     image: '/portfolio/northview.jpg',
     blurb: 'Luxury island villas, beach homes and mountain stays managed across the Philippines.',
-    tags: ['Real Estate', 'Property Management'],
+    tags: ['TypeScript', 'Next.js', 'Real Estate', 'Property Management'],
   },
   {
     index: '03',
     name: 'LAKBAY',
+    category: 'pure-code',
     url: 'https://lakbay-pinas.vercel.app/',
     domain: 'lakbay-pinas.vercel.app',
     image: '/portfolio/lakbay.jpg',
     blurb: 'Private island journeys — 32 hand-scouted Philippine sanctuaries, from Palawan to Batanes.',
-    tags: ['Travel', 'Booking'],
+    tags: ['TypeScript', 'Next.js', 'Travel', 'Booking'],
   },
   {
     index: '04',
     name: 'Astral',
+    category: 'pure-code',
     url: 'https://astral-int.vercel.app/',
     domain: 'astral-int.vercel.app',
     image: '/portfolio/astral.jpg',
     blurb: 'The intelligent workspace that helps teams cut through complexity and ship with confidence.',
-    tags: ['SaaS', 'Productivity'],
+    tags: ['TypeScript', 'Next.js', 'SaaS', 'Productivity'],
   },
   {
     index: '05',
     name: 'LeonHome',
+    category: 'pure-code',
     url: 'https://leonhome.vercel.app/',
     domain: 'leonhome.vercel.app',
     image: '/portfolio/leon.jpg',
     blurb: 'Luxury smart-home architecture firm with Lutron, Crestron, Tesla and Bang & Olufsen integration.',
-    tags: ['Architecture', 'Smart Home'],
+    tags: ['TypeScript', 'Next.js', 'Architecture', 'Smart Home'],
   },
   {
     index: '06',
     name: 'Nebula Store',
+    category: 'pure-code',
     url: 'https://nebulastores.vercel.app/',
     domain: 'nebulastores.vercel.app',
     image: '/portfolio/nebula.jpg',
     blurb: 'Game store built for Nebula Deck & PC.',
-    tags: ['E-commerce', 'Gaming'],
+    tags: ['TypeScript', 'Next.js', 'E-commerce', 'Gaming'],
   },
   {
     index: '07',
     name: 'Medinovas',
+    category: 'pure-code',
     url: 'https://medinovas.vercel.app/',
     domain: 'medinovas.vercel.app',
     image: '/portfolio/medinova.jpg',
     blurb: 'MediNova Pharmaceuticals is committed to delivering high-quality, affordable medicines that help Filipino families live healthier lives.', 
-    tags: ['Web App'],
+    tags: ['TypeScript', 'Next.js', 'Web App'],
   },
   {
     index: '08',
     name: 'Geoffrey Designs',
+    category: 'pure-code',
     url: 'https://geoffreys.vercel.app/',
     domain: 'geoffreys.vercel.app',
     image: '/portfolio/geoffrey.jpg',
     blurb: 'Timeless, climate-smart interiors for Filipino homes, resorts and workplaces.',
-    tags: ['Interior Design', 'Portfolio'],
+    tags: ['TypeScript', 'Next.js', 'Interior Design', 'Portfolio'],
   },
   {
     index: '09',
     name: 'ZirconAI',
+    category: 'system-admin',
     url: 'https://zirconai.vercel.app/',
     domain: 'zirconai.vercel.app',
     image: '/portfolio/zirconai.png',
     blurb:
       'An experimental AI chatbot built with Next.js — featuring natural language processing for intelligent, context-aware responses. A personal exploration of conversational AI and prompt engineering.',
-    tags: ['AI', 'Next.js'],
+    tags: ['TypeScript', 'Next.js', 'AI', 'API Integration'],
   },
   {
     index: '10',
     name: 'DENR Tools',
+    category: 'system-admin',
     url: 'https://denr-tools.vercel.app/',
     domain: 'denr-tools.vercel.app',
     image: '/portfolio/denr.png',
     blurb:
       'A custom web application developed for the Department of Environment and Natural Resources (DENR) — automating repetitive data tasks to improve operational efficiency and reduce manual processing time.',
-    tags: ['Web App', "Gov't"],
+    tags: ['TypeScript', 'Next.js', 'PDF Automation', "Gov't"],
   },
    {
     index: '11',
     name: 'zrcstudio',
+    category: 'pure-code',
     url: 'https://zrcstudio.vercel.app/',
     domain: 'zrcstudio.vercel.app',
     image: '/portfolio/zrcstudio.png',
-    blurb: 'ZIRCON STUDIO creates films and photographs for portraits, celebrations, and the people at the heart of themSS',
-    tags: ['Next.js', 'TailwindCSS'],
+    blurb: 'ZIRCON STUDIO creates films and photographs for portraits, celebrations, and the people at the heart of them.',
+    tags: ['TypeScript', 'Next.js', 'TailwindCSS'],
   },
     {
     index: '12',
     name: 'cloud-gallery',
+    category: 'pure-code',
     url: 'https://cloud-gallery-five.vercel.app/',
     domain: 'cloud-gallery-five.vercel.app',
     image: '/portfolio/cloud.png',
     blurb: 'ZR — Images in Orbit, a portrait, birthday, wedding, fashion and event photography showcase',
-    tags: ['Next.js', 'TailwindCSS'],
+    tags: ['TypeScript', 'Next.js', 'TailwindCSS'],
 },
   {
     index: '13',
     name: 'Minneth',
+    category: 'pure-code',
     url: 'https://minneth-web.vercel.app/',
     domain: 'minneth-web.vercel.app',
     image: '/portfolio/Port1.jpg',
     blurb: 'Social Media Content & Video Editor web portfolio.',
-    tags: ['Next.js', 'Web Portfolio'],
+    tags: ['TypeScript', 'Next.js', 'Web Portfolio'],
   },
   {
     index: '14',
     name: 'Schedlify',
+    category: 'system-admin',
     url: 'https://schedlify.vercel.app/',
     domain: 'schedlify.vercel.app',
     image: '/portfolio/schedlify.png',
     blurb: 'Map out your Monday-to-Sunday, dress it up in a look you actually like, and export it as an image or PDF. Built for students, planners, and anyone who lives by their timetable.',
-    tags: ['TypeScript', 'Scheduler'],
+    tags: ['TypeScript', 'Next.js', 'Scheduler'],
   },
   {
     index: '15',
     name: 'Courier',
+    category: 'system-admin',
     url: 'https://zcourier.vercel.app/',
     domain: 'zcourier.vercel.app',
     image: '/portfolio/courier.jpeg',
     blurb: 'A delightfully fast, end-to-end encrypted messenger for the people you actually want to talk to. Works on Android.',
-    tags: ['Flutter', 'MobileApp'],
+    tags: ['Dart', 'Flutter', 'Firebase', 'Supabase'],
   },
   {
     index: '16',
-    name: 'Who is zircon, App',
+    name: 'Who is Zircon App',
+    category: 'system-admin',
     url: 'https://who-is-zircon-apk.vercel.app/',
     domain: 'who-is-zircon-apk.vercel.app/',
     image: '/portfolio/whois.jpeg',
     blurb: 'A native Android shell that mirrors every edit you push to whoiszircon.vercel.app. Pull-to-refresh, status-bar tinting, splash, offline page all themed to match the live site.',
-    tags: ['HTML/CSS', 'MobileApp'],
+    tags: ['Kotlin', 'WebView', 'Android'],
   },
    {
     index: '17',
     name: 'Motor Shop Inventory',
+    category: 'system-admin',
     url: 'https://motorsample.vercel.app/',
     domain: 'motorsample.vercel.app',
     image: '/portfolio/motorsample.png',
     blurb:
       'Secure inventory management system with authentication for motor shop operations.',
-    tags: ['React', 'Auth System'],
+    tags: ['TypeScript', 'React', 'Supabase', 'Auth System'],
   },
   {
     index: '18',
     name: 'slidephoto',
+    category: 'pure-code',
     url: 'https://slidephoto.vercel.app/',
     domain: 'slidephoto.vercel.app',
     image: '/portfolio/slide.png',
     blurb: 'A visual storytelling site capturing people, light, and moments through portraits, weddings, and events',
-    tags: ['Next.js', 'TailwindCSS'],
+    tags: ['TypeScript', 'Next.js', 'TailwindCSS'],
 },
     {
     index: '19',
     name: 'VividMe',
+    category: 'pure-code',
     url: 'https://vividme.vercel.app/',
     domain: 'vividme.vercel.app',
     image: '/portfolio/vivid.png',
     blurb:
       'Portfolio & booking platform for a freelance photographer. Packages, gallery, contact form.',
-    tags: ['Next.js', 'Portfolio'],
+    tags: ['TypeScript', 'Next.js', 'Portfolio'],
   },
 
   {
     index: '20',
     name: 'circle-gallery',
+    category: 'pure-code',
     url: 'https://circle-gallery.vercel.app/',
     domain: 'circle-gallery.vercel.app',
     image: '/portfolio/circle.png',
     blurb: 'ZR Studio — a photography portfolio covering portraits, birthdays, weddings, fashion, and events',
-    tags: ['Next.js', 'TailwindCSS'],
-},
-  
+    tags: ['TypeScript', 'Next.js', 'TailwindCSS'],
+},  {
+    index: '21',
+    name: 'LAKBAY (WordPress)',
+    category: 'wordpress',
+    url: 'https://lakbay.xo.je/',
+    domain: 'lakbay.xo.je',
+    image: '/portfolio/lakbay-Wordpress.jpeg',
+    blurb:
+      'The WordPress build of LAKBAY — a PHP-powered version of the Philippine island travel experience, managed end to end through the WordPress dashboard.',
+    tags: ['PHP', 'WordPress', 'Elementor', 'MySQL'],
+  },
+  {
+    index: '22',
+    name: 'Estoria',
+    category: 'wordpress',
+    url: 'https://estoria.xo.je/',
+    domain: 'estoria.xo.je',
+    image: '/portfolio/estoria-Wordpress.jpeg',
+    blurb:
+      'A polished business and brand presence built on WordPress — responsive design with every page managed through the WP dashboard.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
+  {
+    index: '23',
+    name: 'Buylix',
+    category: 'wordpress',
+    url: 'https://buylix-a.gt.tc/',
+    domain: 'buylix-a.gt.tc',
+    image: '/portfolio/buylix-wordpress.jpeg',
+    blurb:
+      'A straightforward WordPress business site — clean structure, fast pages, and content that can be updated right from the WP dashboard.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
+  {
+    index: '24',
+    name: 'Manta Bag',
+    category: 'wordpress',
+    url: 'https://manta-bag.ct.ws/',
+    domain: 'manta-bag.ct.ws',
+    image: '/portfolio/Manta.jpeg',
+    blurb:
+      'A WordPress build for Manta Bag — a clean, product-focused storefront presence for the bag brand, managed end to end through the WP dashboard.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
+  {
+    index: '25',
+    name: 'Barber CDO',
+    category: 'wordpress',
+    url: 'https://barbercdo.free.je/',
+    domain: 'barbercdo.free.je',
+    image: '/portfolio/Barber.jpeg',
+    blurb:
+      'A WordPress site for a Cagayan de Oro barbershop — services, gallery, and shop info presented in a sharp, modern layout, all editable from the WP dashboard.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
+  {
+    index: '26',
+    name: 'Calle Vintage',
+    category: 'wordpress',
+    url: 'https://calle-vintage.site.je/',
+    domain: 'calle-vintage.site.je',
+    image: '/portfolio/calle.jpeg',
+    blurb:
+      'A WordPress site for Calle Vintage — a vintage-inspired shop presence with a curated, old-soul aesthetic, built and maintained entirely on WordPress.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
+  {
+    index: '27',
+    name: 'Panaderya CDO',
+    category: 'wordpress',
+    url: 'https://panaderyacdo.infinityfree.io/',
+    domain: 'panaderyacdo.infinityfree.io',
+    image: '/portfolio/panaderya.jpeg',
+    blurb:
+      'A WordPress site for a local Cagayan de Oro panaderya (bakery) — warm, approachable pages showcasing breads and products, updated right from the WP dashboard.',
+    tags: ['PHP', 'WordPress', 'MySQL'],
+  },
 ]
 
 export const galleryItems = [
@@ -274,6 +374,13 @@ export const galleryItems = [
 
 export const experience = [
   {
+    period: 'March 2026',
+    role: 'Project Debugging & Code Support',
+    company: '2nd-Year IT Students · Bugo, Cagayan de Oro',
+    desc: 'Helped a group of 2nd-year IT students from Bugo get their school POS project back on track — a cashier-style system for handling payments and balances. Traced and fixed the JavaScript and Python errors blocking their build, resolved the Firebase database issues, and walked them through what caused each problem.',
+    skills: ['Debugging', 'JavaScript', 'Python', 'Firebase'],
+  },
+  {
     period: '2024 — Present',
     role: 'Freelance Web Developer',
     company: 'Self-Employed · Remote',
@@ -296,21 +403,6 @@ export const experience = [
   },
 ]
 
-export const competencies = [
-  'UI / UX Design',
-  'JavaScript',
-  'React',
-  'Responsive Design',
-  'Deployment',
-  'REST APIs',
-  'Next.js',
-  'Authentication',
-  'TypeScript',
-  'Node.js',
-  'Git / GitHub',
-  'Cybersecurity',
-]
-
 export const skillGroups = [
   {
     label: 'Frontend',
@@ -327,10 +419,10 @@ export const skillGroups = [
   },
   {
     label: 'Backend',
-    skills: ['Node.js', 'Python', 'Django', 'REST APIs', 'MySQL', 'PostgreSQL', 'Authentication'],
+    skills: ['Node.js', 'PHP', 'Laravel', 'Python', 'Django', 'REST APIs', 'MySQL', 'PostgreSQL', 'Firebase', 'Supabase', 'Authentication'],
   },
   {
     label: 'Tools & Other',
-    skills: ['Git / GitHub', 'VS Code', 'Figma', 'Linux', 'Vercel', 'Cloudflare','Wireshark','Nmap','Kali linux'],
+    skills: ['WordPress', 'Git / GitHub', 'VS Code', 'Figma', 'Linux', 'Vercel', 'Cloudflare','Wireshark','Nmap','Kali linux'],
   },
 ]

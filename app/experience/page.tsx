@@ -6,18 +6,19 @@ import { experience, galleryItems } from '@/lib/portfolio-data'
 
 export const metadata = {
   title: 'Experience — Christian Paul Amantiad',
-  description: 'My journey as a developer — timeline, roles, and a gallery of milestone projects.',
+  description:
+    'A track record across freelance web development, personal projects, and hands-on learning in the modern web stack.',
 }
 
 export default function ExperiencePage() {
   return (
     <>
       {/* Timeline */}
-      <section className="px-6 pt-36 pb-20 md:px-12">
+      <section className="px-4 pt-32 pb-20 sm:px-6 md:px-12 md:pt-36">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <SectionHeading
-              eyebrow="My Journey"
+              eyebrow="Career"
               title="Experience &"
               highlight="timeline"
             />
@@ -45,7 +46,7 @@ export default function ExperiencePage() {
                       aria-hidden
                     />
                     <div className="rounded-2xl glass p-6 text-left">
-                      <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-aurora">
+                      <span className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-aurora">
                         {job.period}
                       </span>
                       <h3 className="mt-2 font-serif text-xl font-bold text-foreground">
@@ -61,7 +62,7 @@ export default function ExperiencePage() {
                         {job.skills.map((s) => (
                           <span
                             key={s}
-                            className="rounded-full border border-border bg-white/[0.025] px-2.5 py-1 font-mono text-[0.5rem] uppercase tracking-[0.18em] text-muted-foreground"
+                            className="rounded-full border border-border bg-white/[0.025] px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground"
                           >
                             {s}
                           </span>
@@ -77,14 +78,14 @@ export default function ExperiencePage() {
       </section>
 
       {/* Gallery */}
-      <section className="px-6 py-20 md:px-12">
+      <section className="px-4 py-20 sm:px-6 md:px-12">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionHeading
               center
               eyebrow="Milestones"
-              title="Moments from the"
-              highlight="journey"
+              title="Project"
+              highlight="highlights"
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -103,7 +104,7 @@ export default function ExperiencePage() {
                       className="absolute inset-0 bg-gradient-to-t from-[rgba(4,6,26,0.85)] to-transparent"
                       aria-hidden
                     />
-                    <span className="absolute bottom-3 left-4 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-aurora">
+                    <span className="absolute bottom-3 left-4 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-aurora">
                       {item.num}
                     </span>
                   </div>
